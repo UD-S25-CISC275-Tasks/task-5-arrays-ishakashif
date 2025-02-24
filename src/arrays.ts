@@ -51,7 +51,11 @@ export const removeDollars = (amounts: string[]): number[] =>
  * in question marks ("?").
  */
 export const shoutIfExclaiming = (messages: string[]): string[] => {
-    return [];
+    const filterMessages = messages.filter((message) => !message.endsWith("?"));
+    const transformedMessages = filterMessages.map((message) => {
+        return message.endsWith("!") ? message.toUpperCase() : message;
+    });
+    return transformedMessages;
 };
 
 /**
@@ -59,7 +63,8 @@ export const shoutIfExclaiming = (messages: string[]): string[] => {
  * 4 letters long.
  */
 export function countShortWords(words: string[]): number {
-    return 0;
+    const filterWords = words.filter((word) => word.length < 4).length;
+    return filterWords;
 }
 
 /**
